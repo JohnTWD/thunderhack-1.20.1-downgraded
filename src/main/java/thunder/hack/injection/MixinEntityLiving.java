@@ -1,6 +1,5 @@
 package thunder.hack.injection;
 
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MovementType;
 import net.minecraft.util.math.Vec3d;
@@ -9,7 +8,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import thunder.hack.ThunderHack;
@@ -35,7 +33,7 @@ public class MixinEntityLiving implements IEntityLiving {
     double prevServerX, prevServerY, prevServerZ;
 
     @Inject(method = {"updateTrackedPositionAndAngles"}, at = {@At("HEAD")})
-    private void updateTrackedPositionAndAnglesHook(double x, double y, double z, float yaw, float pitch, int interpolationSteps, CallbackInfo ci) {
+    private void updateTrackingPositionAndAnglesHook(double x, double y, double z, float yaw, float pitch, int interpolationSteps, boolean interpolate, CallbackInfo ci) {
         prevServerX = serverX;
         prevServerY = serverY;
         prevServerZ = serverZ;
