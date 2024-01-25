@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "id": "thunderhack",
+  "version": "1.4",
+  "icon": "icon.png",
+  "name": "ThunderHack",
+  "description": "Player Assistance Mod",
+  "authors": [
+    {
+      "name": "pan4ur",
+      "contact": {
+        "discord": "pan4ur"
+      }
+    },
+    {
+      "name": "06ED",
+      "contact": {
+        "discord": "dinner_enjoyer"
+      }
+    }
+  ],
+  "license": "GNU General Public License v3.0",
+  "accessWidener": "thunderhack.accesswidener",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "thunder.hack.ThunderHack"
+    ]
+  },
+  "contact": {
+    "sources": "https://github.com/Pan4ur/ThunderHack-Recode",
+    "homepage": "https://thunderhack.onrender.com",
+    "issues": "https://github.com/Pan4ur/ThunderHack-Recode/issues"
+  },
+  "mixins": [
+    "thunderhack.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric-api": "*",
+    "minecraft": ">=1.20.3",
+    "java": ">=17"
+  },
+  "suggests": {
+    "sodium": "*",
+    "lithium": "*",
+    "starlight": "*",
+    "ias": "*",
+    "viafabricplus": "*"
+  }
+}
