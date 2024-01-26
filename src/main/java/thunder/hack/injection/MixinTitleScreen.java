@@ -38,14 +38,5 @@ public class MixinTitleScreen extends Screen {
             mc.getSoundManager().reloadSounds();
             mc.getSoundManager().play(PositionedSoundInstance.master(SoundUtility.MAINMENU_SOUNDEVENT, 1.0f));
         }
-
-        if (ThunderHack.isOutdated && !FabricLoader.getInstance().isDevelopmentEnvironment()) {
-            mc.setScreen(new ConfirmScreen(
-                    confirm -> {
-                        if (confirm) Util.getOperatingSystem().open(URI.create("https://thunderhack.onrender.com/"));
-                        else mc.stop();
-                    },
-                    Text.of(Formatting.RED + "You are using an outdated version of ThunderHack Recode"), Text.of("Please update to the latest release"), Text.of("Download"), Text.of("Quit Game")));
-        }
     }
 }
