@@ -78,16 +78,6 @@ public final class Core {
             if (System.currentTimeMillis() - time > 300)
                 InteractionUtility.awaiting.remove(bp);
         });
-
-        if(autoSave.every(600000)) {
-            FriendManager.saveFriends();
-            ThunderHack.configManager.save(ThunderHack.configManager.getCurrentConfig());
-            ThunderHack.wayPointManager.saveWayPoints();
-            ThunderHack.macroManager.saveMacro();
-            ThunderHack.configManager.saveChestStealer();
-            ThunderHack.configManager.saveInvCleaner();
-            ThunderHack.notificationManager.publicity("AutoSave", isRu() ? "Сохраняю конфиг.." : "Saving config..", 3, Notification.Type.INFO);
-        }
     }
 
     @EventHandler
@@ -124,15 +114,6 @@ public final class Core {
     @EventHandler
     public void onPacketReceive(PacketEvent.Receive e) {
         if (fullNullCheck()) return;
-
-        if (e.getPacket() instanceof GameMessageS2CPacket) {
-            final GameMessageS2CPacket packet = e.getPacket();
-            if (packet.content().getString().contains("skull")) {
-                showSkull = true;
-                skullTimer.reset();
-                mc.world.playSound(mc.player, mc.player.getBlockPos(), SoundEvents.ENTITY_SKELETON_DEATH, SoundCategory.BLOCKS, 1f, 1f);
-            }
-        }
 
         if (e.getPacket() instanceof GameJoinS2CPacket)
             ThunderHack.moduleManager.onLogin();
